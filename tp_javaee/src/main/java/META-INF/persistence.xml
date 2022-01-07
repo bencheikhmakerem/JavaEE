@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence 
+        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+        version="2.2">
+
+    <!-- transaction type is JTA or RESOURCE_LOCAL -->
+    <persistence-unit name="tp_javaee" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/communeRSDS</jta-data-source>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+        <!-- for Java EE servers
+        <jta-data-source>java:/TP_JPA_DS</jta-data-source>
+         -->
+        <properties>
+
+            <!-- create-tables | create-or-extend-table | drop-and-create-tables | none  -->
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+
+            <!-- database | file | both -->
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+
+            <!-- Specify the database to use  -->
+            <property name="eclipselink.target-database" value="MySQL"/>
+
+        </properties>
+    </persistence-unit>
+</persistence>
